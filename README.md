@@ -1,4 +1,4 @@
-<Hecho por una persona.>
+<Todo hecho solo para conocimientos en el juego.>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -15,13 +15,16 @@
 
     body {
       height: 100vh;
-      background: linear-gradient(135deg, #0a0f1f, #1a233a);
+      background: url('fondo.png') no-repeat center center/cover;
       font-family: 'Orbitron', sans-serif;
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+
+      /* 👇 AGREGADO */
+      position: relative;
     }
 
     body::before {
@@ -34,6 +37,18 @@
       animation: moveBg 20s linear infinite;
     }
 
+    /* 👇 ESTO ES LO NUEVO QUE FALTABA */
+    body::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
     @keyframes moveBg {
       from { transform: translate(0,0); }
       to { transform: translate(-200px, -200px); }
@@ -41,7 +56,11 @@
 
     .container {
       text-align: center;
+
+      /* 👇 AGREGADO */
+      position: relative;
       z-index: 2;
+
       backdrop-filter: blur(10px);
       background: rgba(0,0,0,0.4);
       padding: 40px;
