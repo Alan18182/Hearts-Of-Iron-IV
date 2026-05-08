@@ -1,4 +1,4 @@
-<!-- Todo hecho a base para conocimientos sobre el juego. -->
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
