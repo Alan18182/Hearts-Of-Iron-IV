@@ -220,10 +220,10 @@
                         </li>
                     </ul>
                 `,
-                aire: "<h3>✈️ Superioridad Aérea</h3><p>La superioridad aérea protege a tus tropas de penalizadores y permite el Apoyo Aéreo Cercano (CAS), que es el mayor destructor de divisiones enemigas en combate.</p>",
+                aire: "<h3>✈️ Superioridad Aérea</h3><p> La superioridad aérea protege a tus tropas de penalizadores y permite el Apoyo Aéreo Cercano (CAS), que es el mayor destructor de divisiones enemigas en combate.</p>",
                 logistica: `
                     <h3>📦 LOGÍSTICA Y SUMINISTROS</h3>
-                    <p><strong>Red de Suministros:</strong>Todo nace en la Capital y se distribuye a través de Centros de Suministros (puntos amarillos) y Bases Navales (anclas) mediante Ferrocarriles o Convoys.</p>
+                    <p><strong>Red de Suministros:</strong> Todo nace en la Capital y se distribuye a través de Centros de Suministros (puntos amarillos) y Bases Navales (anclas) mediante Ferrocarriles o Convoys.</p>
                     <ul>
                         <li><strong>Motorización:</strong> Clica en un Centro de Suministros para cambiar de transporte con caballos a camiones. Esto aumenta drásticamente el alcance del suministro en el frente.</li>
                         <li><strong>Vías Férreas:</strong> Sube el nivel de los ferrocarriles para evitar "cuellos de botella" y permitir que más equipo llegue desde la capital a zonas lejanas.</li>
