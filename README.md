@@ -1,149 +1,162 @@
-<A fines de entretenimiento y conocimientos.>
+<A fines de entretenimiento y conocimientos>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hearts Of Iron IV</title>
+    <title>Hearts Of Iron IV - Cuartel de Mando</title>
     <style>
-        /* RESET */
+        /* --- ESTILOS VISUALES CORRECTOS --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             background: url('fondo.png') no-repeat center center fixed;
             background-size: cover;
             color: white;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow-x: hidden;
         }
 
-        /* CAPA OSCURA */
+        /* Capa oscura para legibilidad */
         .capa-oscura {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.78);
             z-index: 1;
         }
 
-        /* EFECTO HUMO */
+        /* Efecto de humo animado que pediste */
         .humo {
             position: fixed;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 10%, transparent 60%);
-            animation: humo-mov 20s linear infinite;
+            width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 10%, transparent 60%);
+            animation: humo-mov 25s linear infinite;
             z-index: 2;
             pointer-events: none;
         }
 
         @keyframes humo-mov {
             from { transform: translate(0,0); }
-            to { transform: translate(-200px,-200px); }
+            to { transform: translate(-150px,-150px); }
         }
 
-        /* INTERFAZ */
-        .interface {
+        /* Contenedor de la interfaz */
+        .wrapper {
             position: relative;
             z-index: 10;
             text-align: center;
             width: 90%;
-            max-width: 800px;
+            max-width: 850px;
+            padding: 20px;
         }
 
         h1 {
-            font-size: clamp(30px, 8vw, 55px);
+            font-size: clamp(35px, 8vw, 60px);
+            text-shadow: 0 0 25px #00aaff;
+            letter-spacing: 2px;
             margin-bottom: 10px;
-            text-shadow: 0 0 25px rgba(0,150,255,0.9);
-            color: white;
         }
 
         .slogan {
             font-size: 1.2rem;
             margin-bottom: 40px;
-            opacity: 0.9;
+            opacity: 0.8;
+            color: #ddd;
         }
 
-        /* BOTONES */
+        /* Botón de entrada azul brillante */
         .btn-entrar {
-            padding: 15px 50px;
-            border: none;
-            border-radius: 8px;
+            padding: 18px 55px;
             background: #00aaff;
+            border: none;
             color: white;
             font-size: 20px;
             font-weight: bold;
+            text-transform: uppercase;
             cursor: pointer;
+            border-radius: 8px;
             transition: 0.3s;
-            box-shadow: 0 0 15px rgba(0,170,255,0.5);
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
         }
 
         .btn-entrar:hover {
-            background: #0077aa;
             transform: scale(1.05);
-            box-shadow: 0 0 30px #00aaff;
+            background: #0088cc;
+            box-shadow: 0 0 35px #00aaff;
         }
 
-        /* CONTENIDO SECCIONES */
+        /* Pantalla de Contenido */
         #contenido {
             display: none;
             flex-direction: column;
             align-items: center;
-            animation: aparecer 0.5s ease;
+            animation: fadeIn 0.6s ease;
         }
 
-        .grid-secciones {
+        .grid-menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
             width: 100%;
             margin-top: 20px;
         }
 
-        .seccion {
-            padding: 15px;
-            background: rgba(0,0,0,0.8);
+        .tarjeta {
+            padding: 20px;
+            background: rgba(15, 15, 15, 0.9);
             border-left: 5px solid #00aaff;
             cursor: pointer;
             transition: 0.3s;
             text-align: left;
+            font-weight: bold;
         }
 
-        .seccion:hover {
+        .tarjeta:hover {
             background: rgba(0, 170, 255, 0.2);
-            transform: translateX(5px);
+            transform: translateX(10px);
         }
 
+        /* Panel de Detalle con el resumen del video */
         #detalle {
-            margin-top: 20px;
-            padding: 20px;
-            background: rgba(0,0,0,0.9);
+            margin-top: 25px;
+            padding: 25px;
+            background: rgba(0, 0, 0, 0.9);
             border: 1px solid #00aaff;
+            border-radius: 5px;
             text-align: left;
+            display: none;
+            line-height: 1.7;
+            animation: fadeIn 0.4s ease;
         }
 
-        @keyframes aparecer {
+        #detalle h3 { color: #00aaff; margin-bottom: 15px; font-size: 1.6rem; }
+        #detalle ul { margin-left: 20px; margin-top: 10px; }
+        #detalle li { margin-bottom: 10px; color: #eee; }
+
+        .btn-volver {
+            background: transparent;
+            border: 1px solid #ffffff;
+            color: white;
+            padding: 8px 18px;
+            cursor: pointer;
+            margin-bottom: 25px;
+            align-self: flex-start;
+            transition: 0.3s;
+        }
+
+        .btn-volver:hover { background: white; color: black; }
+
+        @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-
-        .volver {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            padding: 5px 15px;
-            margin-bottom: 20px;
-            cursor: pointer;
-            align-self: flex-start;
         }
     </style>
 </head>
@@ -152,51 +165,69 @@
     <div class="capa-oscura"></div>
     <div class="humo"></div>
 
-    <div class="interface">
-        
+    <div class="wrapper">
         <div id="inicio">
-            <h1>⚔️ Hearts Of Iron IV ⚔️</h1>
-            <p class="slogan">Dominá la guerra, controlá el mundo.</p>
-            <button class="btn-entrar" onclick="entrar()">Entrar</button>
+            <h1>⚔️ HEARTS OF IRON IV ⚔️</h1>
+            <p class="slogan">Guía de Mando y Estrategia Naval</p>
+            <button class="btn-entrar" onclick="navegar('entrar')">Entrar</button>
         </div>
 
         <div id="contenido">
-            <button class="volver" onclick="volver()">⬅ Volver</button>
-            <div class="grid-secciones">
-                <div class="seccion" onclick="abrir('marina')">⚓ Marina</div>
-                <div class="seccion" onclick="abrir('tierra')">🪖 Terrestre</div>
-                <div class="seccion" onclick="abrir('aire')">✈ Aéreo</div>
-                <div class="seccion" onclick="abrir('logistica')">📦 Logística</div>
+            <button class="btn-volver" onclick="navegar('volver')">⬅ Volver</button>
+            <div class="grid-menu">
+                <div class="tarjeta" onclick="mostrarDetalle('marina')">⚓ Marina</div>
+                <div class="tarjeta" onclick="mostrarDetalle('tierra')">🪖 Terrestre</div>
+                <div class="tarjeta" onclick="mostrarDetalle('aire')">✈️ Aéreo</div>
+                <div class="tarjeta" onclick="mostrarDetalle('logistica')">📦 Logística</div>
             </div>
-            <div id="detalle" style="display:none;"></div>
+            <div id="detalle"></div>
         </div>
-
     </div>
 
     <script>
-        function abrirSeccion(seccion) {
+        // Sistema de Navegación
+        function navegar(accion) {
+            const inicio = document.getElementById("inicio");
+            const contenido = document.getElementById("contenido");
+            const detalle = document.getElementById("detalle");
+
+            if (accion === 'entrar') {
+                inicio.style.display = "none";
+                contenido.style.display = "flex";
+            } else {
+                inicio.style.display = "block";
+                contenido.style.display = "none";
+                detalle.style.display = "none";
+            }
+        }
+
+        // Sistema de Información (Con resumen de Kapibardo)
+        function mostrarDetalle(seccion) {
             const d = document.getElementById("detalle");
             d.style.display = "block";
             
-            const textos = {
+            const baseDatos = {
                 marina: `
                     <h3>⚓ ESTRATEGIA NAVAL DEFINITIVA</h3>
-                    <p><strong>Estructura de Combate:</strong> La flota se divide en 4 zonas clave. Las pantallas (Destructores y Cruceros Ligeros) protegen a los Buques Capitales, y estos a su vez protegen a los Portaaviones. Mantén siempre un ratio de 4 pantallas por cada buque capital para evitar torpedos.</p>
+                    <p><strong>Estructura de Combate:</strong> La flota se divide en 4 zonas clave. Las pantallas (Destructores y Cruceros Ligeros) protegen a los Buques Capitales para evitar que los hundan con torpedos. Mantén siempre un ratio de 4 pantallas por cada buque pesado.</p>
+                    <ul>
+                        <li><strong>Fuerza de Choque:</strong> Tu flota principal. Mantenla en puerto para ahorrar combustible; saldrá sola cuando tus patrullas detecten al enemigo.</li>
+                        <li><strong>Flota de Patrulla:</strong> Cruceros ligeros rápidos con catapultas de aviones. Úsalos solo para encontrar barcos, nunca para pelear.</li>
+                        <li><strong>Submarinos:</strong> Su única misión es asfixiar al enemigo hundiendo sus convoyes en océanos profundos.</li>
+                    </ul>
                     <br>
-                    <p><strong>Tipos de Flota:</strong>
-                        <ul>
-                            <li><strong>Fuerza de Choque:</strong> Tu flota principal; mantenla en puerto para ahorrar combustible hasta que se detecte al enemigo.</li>
-                            <li><strong>Patrulla:</strong> Cruceros ligeros rápidos con catapultas de aviones para localizar objetivos sin entrar en combate.</li>
-                            <li><strong>Submarinos:</strong> Enfocados exclusivamente en asfixiar la logística enemiga hundiendo convoyes en océanos profundos.</li>
-                        </ul>
-                    </p>
-                    <br>
-                    <p><strong>Consejo Técnico:</strong> Prioriza la investigación de "Control de Daños" y usa diseños de 1940 con motores nivel 3. La velocidad es tu mejor defensa para esquivar ataques enemigos.</p>
+                    <p><strong>Diseño Meta:</strong> Usa modelos de 1940 con motores nivel 3. Investiga "Control de Daños" y "Simulacro de Incendios" para que tus barcos sobrevivan a las batallas más duras.</p>
                 `,
-                tierra: "<h3>🪖 Terrestre</h3><p>Diseñá divisiones equilibradas y usá el terreno a tu favor. ¡Cuidado con el invierno ruso!</p>",
-                aire: "<h3>✈ Aéreo</h3><p>La superioridad aérea gana guerras. Apoyá a tus tropas con apoyo aéreo cercano.</p>",
-                logistica: "<h3>📦 Logística</h3><p>Sin trenes ni suministros, tus tanques no se moverán. Vigilá siempre tus líneas de abastecimiento.</p>"
+                tierra: "<h3>🪖 Terrestre</h3><p>Usa divisiones de ancho de combate 20 o 40. No olvides la artillería y los ingenieros para cruzar ríos y defender montañas.</p>",
+                aire: "<h3>✈️ Aéreo</h3><p>La superioridad aérea es lo más importante. Sin ella, tus tropas sufrirán penalizadores de defensa y movimiento.</p>",
+                logistica: "<h3>📦 Logística</h3><p>Vigila siempre el suministro de tus tropas. Construye trenes y camiones para que el frente no se quede sin suministros.</p>"
             };
 
-            d.innerHTML = textos[seccion];
+            d.innerHTML = baseDatos[seccion];
+            
+            // Auto-scroll suave para leer el contenido
+            d.scrollIntoView({ behavior: 'smooth' });
         }
+    </script>
+</body>
+</html>
