@@ -1,5 +1,4 @@
 <!-- Todo hecho a base para conocimientos sobre el juego. -->
-<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -25,20 +24,19 @@
       overflow: hidden;
     }
 
-    /* EFECTO SUAVE DE FONDO (sin imágenes externas) */
     body::before {
       content: "";
       position: absolute;
       width: 200%;
       height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background: radial-gradient(circle, rgba(56,189,248,0.1) 1px, transparent 1px);
       background-size: 40px 40px;
-      animation: mover 20s linear infinite;
+      animation: moveBg 20s linear infinite;
     }
 
-    @keyframes mover {
+    @keyframes moveBg {
       from { transform: translate(0,0); }
-      to { transform: translate(-200px,-200px); }
+      to { transform: translate(-200px, -200px); }
     }
 
     .container {
@@ -48,7 +46,7 @@
       background: rgba(0,0,0,0.4);
       padding: 40px;
       border-radius: 20px;
-      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+      box-shadow: 0 0 40px rgba(56,189,248,0.3);
     }
 
     h1 {
@@ -74,6 +72,7 @@
       cursor: pointer;
       transition: 0.3s;
       box-shadow: 0 0 15px #38bdf8;
+      margin: 5px;
     }
 
     button:hover {
@@ -88,44 +87,10 @@
       color: #94a3b8;
     }
 
-    /* MENU */
+    /* Secciones ocultas */
     #menu {
       display: none;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      top: 0;
-      left: 0;
-      padding-top: 80px;
-      text-align: center;
     }
-
-    /* BOTON VOLVER */
-    .volver-btn {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-    }
-
-    /* SECCIONES */
-    .seccion {
-      margin: 15px;
-      padding: 15px;
-      background: rgba(56,189,248,0.1);
-      border: 1px solid #38bdf8;
-      border-radius: 10px;
-      display: inline-block;
-      width: 200px;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-
-    .seccion:hover {
-      transform: scale(1.1);
-      background: rgba(56,189,248,0.3);
-    }
-
   </style>
 </head>
 
@@ -146,20 +111,18 @@
     </footer>
   </div>
 
-  <!-- MENU -->
-  <div id="menu">
+  <!-- MENÚ -->
+  <div class="container" id="menu">
+    <h1>📂 Secciones</h1>
 
-    <button onclick="volver()" class="volver-btn">⬅️ Volver atrás</button>
+    <p>⚓ Marina</p>
+    <p>🪖 Terrestre</p>
+    <p>✈️ Aéreo</p>
+    <p>🔬 Investigaciones</p>
+    <p>🏛️ Focos Nacionales</p>
+    <p>📦 Guía Logística</p>
 
-    <h1>📚 Secciones</h1>
-
-    <div class="seccion">⚓ Marina</div>
-    <div class="seccion">🪖 Terrestre</div>
-    <div class="seccion">✈️ Aéreo</div>
-    <div class="seccion">🔬 Investigaciones</div>
-    <div class="seccion">🏛️ Focos Nacionales</div>
-    <div class="seccion">📦 Guía Logística</div>
-
+    <button onclick="volver()">⬅ Volver atrás</button>
   </div>
 
   <script>
@@ -170,7 +133,7 @@
 
     function volver() {
       document.getElementById("menu").style.display = "none";
-      document.getElementById("inicio").style.display = "flex";
+      document.getElementById("inicio").style.display = "block";
     }
   </script>
 
