@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hearts Of Iron IV - Cuartel de Mando</title>
     <style>
-        /* --- ESTÉTICA VISUAL (FIJA) --- */
+        /* --- ESTÉTICA VISUAL (FIJA E INTACTA) --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 
         body {
@@ -77,7 +77,7 @@
 
         .grid-menu {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             width: 100%;
             margin-top: 30px;
@@ -91,6 +91,7 @@
             transition: 0.3s;
             text-align: left;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
         .tarjeta:hover {
@@ -111,7 +112,6 @@
         }
 
         #detalle h3 { color: #00aaff; margin-bottom: 15px; border-bottom: 1px solid #333; padding-bottom: 5px; }
-        #detalle strong { color: #00ccff; }
         #detalle ul { margin: 15px 0 15px 25px; }
         #detalle li { margin-bottom: 8px; }
 
@@ -172,36 +172,34 @@
             const info = {
                 marina: `
                     <h3>⚓ ESTRATEGIA NAVAL DEFINITIVA</h3>
-                    <p><strong>Composición y Proporción:</strong> La supervivencia de tu flota depende de las "pantallas" (Destructores y Cruceros Ligeros). Debes mantener un ratio mínimo de <strong>4 pantallas por cada Buque Capital</strong> para bloquear torpedos enemigos.</p>
+                    <p><strong>Composición y Proporción:</strong> Ratio de <strong>4 pantallas por cada Buque Capital</strong> para bloquear torpedos.</p>
                     <ul>
-                        <li><strong>Fuerza de Choque (Strike Force):</strong> Tu flota principal. Déjala en puerto con esta misión para ahorrar combustible; solo saldrá cuando tus patrullas detecten una flota enemiga importante.</li>
-                        <li><strong>Patrulla:</strong> Usa grupos de 1-2 Cruceros Ligeros muy rápidos equipados con radares y catapultas de aviones. Su objetivo es detectar, no combatir.</li>
-                        <li><strong>Guerra de Convoyes:</strong> Los submarinos son letales en grupos de 8 a 12. Ataca en zonas de "Océano Profundo" para maximizar su ocultamiento.</li>
+                        <li><strong>Fuerza de Choque:</strong> Tu flota principal en puerto para ahorrar combustible.</li>
+                        <li><strong>Patrulla:</strong> Cruceros Ligeros rápidos con radar.</li>
+                        <li><strong>Guerra de Convoyes:</strong> Submarinos en grupos de 8 a 12 en Océano Profundo.</li>
                     </ul>`,
                 tierra: `
                     <h3>🪖 EJÉRCITO Y COMBATE TERRESTRE</h3>
-                    <p><strong>Mecánicas Cruciales:</strong> El éxito depende del Ataque Ligero, Ataque Pesado y la Organización.</p>
+                    <p><strong>Ancho de Combate:</strong> Atacar desde múltiples flancos añade +35 de ancho.</p>
                     <ul>
-                        <li><strong>Ancho de Combate:</strong> Atacar desde múltiples flancos añade +35 de ancho por cada lado extra.</li>
-                        <li><strong>Terrenos:</strong> Las Llanuras son ideales para tanques. Montañas y Ciudades dan bonos defensivos masivos.</li>
-                        <li><strong>Doctrinas:</strong> Fuego Superior (daño de artillería), Guerra Móvil (velocidad) o Asalto en Masa (saturación de frente).</li>
+                        <li><strong>Terrenos:</strong> Llanuras para tanques; Montañas y Ciudades para defensa.</li>
+                        <li><strong>Doctrinas:</strong> Fuego Superior, Guerra Móvil o Asalto en Masa.</li>
                     </ul>`,
-                aire: `<h3>✈️ SUPERIORIDAD AÉREA</h3><p>Sin superioridad aérea, tus tropas sufren una penalización de defensa y movimiento. El apoyo aéreo cercano (CAS) es el mayor multiplicador de daño en tierra.</p>`,
+                aire: `<h3>✈️ SUPERIORIDAD AÉREA</h3><p>Sin superioridad aérea, tus tropas sufren penalización de defensa. El apoyo CAS es vital.</p>`,
                 logistica: `
                     <h3>📦 LOGÍSTICA Y SUMINISTROS</h3>
-                    <p><strong>Red de Suministro:</strong> El suministro fluye desde la Capital hacia los Hubs por vías férreas o vía marítima mediante puertos y Convoys.</p>
+                    <p><strong>Red de Suministro:</strong> Fluye desde la Capital hacia los Hubs por vías férreas.</p>
                     <ul>
-                        <li><strong>Motorización de Hubs:</strong> Cambia de caballos a camiones para expandir el rango de entrega.</li>
-                        <li><strong>Ferrocarriles:</strong> Mejora el nivel de las vías para eliminar cuellos de botella.</li>
-                        <li><strong>Trenes Blindados:</strong> Fundamentales para resistir bombardeos logísticos enemigos.</li>
+                        <li><strong>Motorización:</strong> Cambia de caballos a camiones para expandir el alcance.</li>
+                        <li><strong>Trenes Blindados:</strong> Vitales para resistir bombardeos logísticos enemigos.</li>
                     </ul>`,
                 investigaciones: `
                     <h3>🔬 PRIORIDADES DE INVESTIGACIÓN</h3>
-                    <p><strong>Gestión del Tiempo:</strong> Nunca dejes un slot de investigación vacío. Prioriza siempre las tecnologías que dan bonos de tiempo antes que las de equipo.</p>
+                    <p><strong>Gestión del Tiempo:</strong> Prioriza bonos de industria y electrónica primero.</p>
                     <ul>
-                        <li><strong>Industria y Electrónica:</strong> Son las más importantes al inicio. Investiga "Máquinas Herramientas" y "Computación" para acelerar todo el resto de la partida.</li>
-                        <li><strong>Bonos de Tiempo:</strong> Evita investigar tecnologías con años de adelanto a menos que tengas un bono del 50% o 100% por enfoque nacional.</li>
-                        <li><strong>Compañías de Apoyo:</strong> No olvides investigar la Compañía de Radio (Refuerzo) y la de Logística si planeas frentes extensos.</li>
+                        <li><strong>Industria:</strong> Máquinas herramientas para capacidad de producción.</li>
+                        <li><strong>Electrónica:</strong> Computación para reducir el tiempo de todas las investigaciones futuras.</li>
+                        <li><strong>Compañías de Apoyo:</strong> Radio y Logística son claves para el frente.</li>
                     </ul>`
             };
 
