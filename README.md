@@ -205,33 +205,33 @@
                         <li><strong>Patrulla:</strong> Barcos rápidos (Cruceros Ligeros) para localizar al enemigo sin entrar en batalla.</li>
                         <li><strong>Submarinos:</strong> Enfócalos en el ataque de convoyes en océanos profundos.</li>
                     </ul>
-                    <br>
-                    <p><strong>Diseño Meta:</strong> Prioriza motores nivel 3 y cascos de 1940. Investiga "Control de Daños" para aumentar la supervivencia.</p>
                 `,
                 tierra: `
                     <h3>🪖 MANUAL DEL EJÉRCITO TERRESTRE</h3>
-                    <p><strong>Estadísticas Clave:</strong>El combate se decide por Ataque Ligero (contra infantería), Ataque Pesado (contra tanques) y Defensa/Incursión. Una división pierde cuando se agota su Organización (barra verde) o su Fuerza (barra naranja).</p>
+                    <p><strong>Estadísticas de Combate:</strong>Las batallas se deciden por Ataque Ligero, Ataque Pesado y Organización. Las divisiones pierden cuando su Organización (barra verde) o Fuerza (barra naranja) se agotan.</p>
                     <ul>
-                        <li><strong>Ancho de Combate:</strong> No excedas el límite de la provincia para evitar penalizadores. Atacar desde múltiples direcciones amplía el ancho disponible.</li>
-                        <li><strong>Terreno y Clima:</strong> Las llanuras son ideales para avanzar, mientras que las montañas y pantanos son los terrenos más difíciles. El frío extremo y la nieve pueden destruir tu logística rápidamente.</li>
-                        <li><strong>Doctrinas Tácticas:</strong> 
+                        <li><strong>Ancho de Combate:</strong> Ataca desde múltiples flancos para ampliar el ancho de combate y permitir que más divisiones luchen a la vez.</li>
+                        <li><strong>Doctrinas Terrestres:</strong> 
                             <ul>
-                                <li><em>Fuego Superior:</em> La mejor para maximizar el ataque ligero con artillería.</li>
-                                <li><em>Guerra Móvil:</em> Ideal para divisiones mecanizadas y rápidas.</li>
-                                <li><em>Asalto en Masa:</em> Perfecta si tienes mucho manpower; reduce el ancho de combate de la infantería.</li>
+                                <li><em>Fuego Superior:</em> Máximo ataque ligero con artillería.</li>
+                                <li><em>Guerra Móvil:</em> Enfoque en velocidad y tanques.</li>
+                                <li><em>Asalto en Masa:</em> Ideal para países con mucho manpower (ej: URSS o China).</li>
                             </ul>
                         </li>
                     </ul>
-                    <br>
-                    <p><strong>Compañías de Apoyo:</strong> Los ingenieros son esenciales para la defensa y el terreno difícil. La artillería es el corazón de cualquier ofensiva contra la IA.</p>
                 `,
-                aire: "<h3>✈️ Superioridad Aérea</h3><p>Sin cazas, tus tropas sufren penalizadores de movimiento y defensa. El apoyo aéreo cercano (CAS) es vital para ganar batallas terrestres difíciles.</p>",
-                logistica: "<h3>📦 Gestión Logística</h3><p>Controla los centros de suministros y las vías férreas. Si tus divisiones están en rojo, perderán organización y equipo sin siquiera luchar.</p>"
-            };
-
-            d.innerHTML = info[seccion];
-            d.scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
-</body>
-</html>
+                aire: "<h3>✈️ Superioridad Aérea</h3><p>La superioridad aérea protege a tus tropas de penalizadores y permite el Apoyo Aéreo Cercano (CAS), que es el mayor destructor de divisiones enemigas en combate.</p>",
+                logistica: `
+                    <h3>📦 LOGÍSTICA Y SUMINISTROS</h3>
+                    <p><strong>Red de Suministros:</strong>Todo nace en la Capital y se distribuye a través de Centros de Suministros (puntos amarillos) y Bases Navales (anclas) mediante Ferrocarriles o Convoys.</p>
+                    <ul>
+                        <li><strong>Motorización:</strong> Clica en un Centro de Suministros para cambiar de transporte con caballos a camiones. Esto aumenta drásticamente el alcance del suministro en el frente.</li>
+                        <li><strong>Vías Férreas:</strong> Sube el nivel de los ferrocarriles para evitar "cuellos de botella" y permitir que más equipo llegue desde la capital a zonas lejanas.</li>
+                        <li><strong>Tipos de Trenes:</strong> 
+                            <ul>
+                                <li><em>Civil:</em> El estándar básico.</li>
+                                <li><em>De Austeridad:</em> Barato y rápido de producir.</li>
+                                <li><em>Blindado:</em> Resistente a los bombardeos logísticos del enemigo.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Puentes Aéreos:</strong> Usa aviones de transporte para enviar
