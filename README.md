@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<Hecho por una persona.>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
