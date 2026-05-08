@@ -1,141 +1,193 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Hearts Of Iron IV</title>
+<meta charset="UTF-8">
+<title>Hearts Of Iron IV</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+<style>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
 
-    body {
-      height: 100vh;
-      background: url('fondo.png') no-repeat center center/cover;
-      font-family: 'Orbitron', sans-serif;
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
+/* FONDO */
+body {
+  background: url('TU_IMAGEN_AQUI.jpg') no-repeat center center/cover;
+  color: white;
+  overflow: hidden;
+}
 
-    body::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(56,189,248,0.1) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: moveBg 20s linear infinite;
-    }
+/* CAPA OSCURA */
+body::before {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.75);
+  z-index: -1;
+}
 
-    @keyframes moveBg {
-      from { transform: translate(0,0); }
-      to { transform: translate(-200px, -200px); }
-    }
+/* HUMO */
+body::after {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 10%, transparent 60%);
+  animation: humo 20s linear infinite;
+  z-index: -1;
+}
 
-    .container {
-      text-align: center;
-      z-index: 2;
-      backdrop-filter: blur(10px);
-      background: rgba(0,0,0,0.4);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 40px rgba(56,189,248,0.3);
-    }
+@keyframes humo {
+  from { transform: translate(0,0); }
+  to { transform: translate(-200px,-200px); }
+}
 
-    h1 {
-      font-size: 3em;
-      color: #38bdf8;
-      text-shadow: 0 0 20px #38bdf8;
-      margin-bottom: 20px;
-    }
+/* PANTALLAS */
+#inicio, #contenido {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-    p {
-      font-size: 1.2em;
-      color: #cbd5f5;
-      margin-bottom: 30px;
-    }
+/* TITULO */
+h1 {
+  font-size: 50px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 20px rgba(0,150,255,0.8);
+}
 
-    button {
-      padding: 12px 25px;
-      font-size: 1em;
-      border: none;
-      border-radius: 10px;
-      background: #38bdf8;
-      color: black;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 15px #38bdf8;
-      margin: 5px;
-    }
+/* BOTON */
+button {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 10px;
+  background: #00aaff;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    button:hover {
-      transform: scale(1.1);
-      background: #0ea5e9;
-      box-shadow: 0 0 25px #38bdf8;
-    }
+button:hover {
+  background: #0077aa;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px #00aaff;
+}
 
-    footer {
-      margin-top: 20px;
-      font-size: 0.8em;
-      color: #94a3b8;
-    }
+/* SECCIONES */
+.seccion {
+  width: 250px;
+  margin: 10px;
+  padding: 15px;
+  background: rgba(0,0,0,0.7);
+  border-left: 5px solid #00aaff;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    /* Secciones ocultas */
-    #menu {
-      display: none;
-    }
-  </style>
+.seccion:hover {
+  transform: translateX(10px);
+  background: rgba(0,0,0,0.9);
+  box-shadow: 0 0 15px #00aaff;
+}
+
+/* DETALLE */
+#detalle {
+  margin-top: 20px;
+  padding: 20px;
+  background: rgba(0,0,0,0.8);
+  border-radius: 10px;
+  animation: aparecer 0.5s ease;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- INICIO -->
-  <div class="container" id="inicio">
-    <h1>⚔️ Hearts Of Iron IV ⚔️</h1>
-    
-    <p>
-      Todo lo relacionado con el juego Hearts Of Iron IV de Paradox
-    </p>
+<!-- INICIO -->
+<div id="inicio">
+  <h1>⚔️ Hearts Of Iron IV ⚔️</h1>
+  <p>Dominá la guerra, controlá el mundo.</p>
+  <button onclick="entrar()">Entrar</button>
+</div>
 
-    <button onclick="entrar()">Entrar</button>
+<!-- CONTENIDO -->
+<div id="contenido" style="display:none;">
 
-    <footer>
-      Fan page no oficial
-    </footer>
-  </div>
+  <button onclick="volver()">⬅ Volver</button>
 
-  <!-- MENÚ -->
-  <div class="container" id="menu">
-    <h1>📂 Secciones</h1>
+  <h2 style="margin:20px;">Secciones</h2>
 
-    <p>⚓ Marina</p>
-    <p>🪖 Terrestre</p>
-    <p>✈️ Aéreo</p>
-    <p>🔬 Investigaciones</p>
-    <p>🏛️ Focos Nacionales</p>
-    <p>📦 Guía Logística</p>
+  <div class="seccion" onclick="abrirSeccion('marina')">⚓ Marina</div>
+  <div class="seccion" onclick="abrirSeccion('tierra')">🪖 Terrestre</div>
+  <div class="seccion" onclick="abrirSeccion('aire')">✈ Aéreo</div>
+  <div class="seccion" onclick="abrirSeccion('investigaciones')">🔬 Investigaciones</div>
+  <div class="seccion" onclick="abrirSeccion('focos')">📜 Focos Nacionales</div>
+  <div class="seccion" onclick="abrirSeccion('logistica')">📦 Guía Logística</div>
 
-    <button onclick="volver()">⬅ Volver atrás</button>
-  </div>
+  <div id="detalle"></div>
 
-  <script>
-    function entrar() {
-      document.getElementById("inicio").style.display = "none";
-      document.getElementById("menu").style.display = "block";
-    }
+</div>
 
-    function volver() {
-      document.getElementById("menu").style.display = "none";
-      document.getElementById("inicio").style.display = "block";
-    }
-  </script>
+<script>
+
+function entrar() {
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("contenido").style.display = "flex";
+}
+
+function volver() {
+  document.getElementById("contenido").style.display = "none";
+  document.getElementById("inicio").style.display = "flex";
+  document.getElementById("detalle").innerHTML = "";
+}
+
+function abrirSeccion(seccion) {
+  let contenido = "";
+
+  if (seccion === "marina") {
+    contenido = "<h3>⚓ Marina</h3><p>Dominá los mares con flotas, portaaviones y submarinos.</p>";
+  }
+
+  if (seccion === "tierra") {
+    contenido = "<h3>🪖 Terrestre</h3><p>Estrategias de infantería, tanques y líneas de frente.</p>";
+  }
+
+  if (seccion === "aire") {
+    contenido = "<h3>✈ Aéreo</h3><p>Control total del cielo con cazas y bombarderos.</p>";
+  }
+
+  if (seccion === "investigaciones") {
+    contenido = "<h3>🔬 Investigaciones</h3><p>Desbloqueá tecnología para dominar la guerra.</p>";
+  }
+
+  if (seccion === "focos") {
+    contenido = "<h3>📜 Focos Nacionales</h3><p>Expandí tu nación con decisiones estratégicas.</p>";
+  }
+
+  if (seccion === "logistica") {
+    contenido = "<h3>📦 Logística</h3><p>Gestioná suministros, trenes y producción.</p>";
+  }
+
+  document.getElementById("detalle").innerHTML = contenido;
+}
+
+</script>
 
 </body>
 </html>
