@@ -18,13 +18,13 @@
             background-size: cover;
             color: white;
             height: 100vh;
-            overflow: hidden; /* Evita scrolls raros en el inicio */
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* CAPA OSCURA DE PROFUNDIDAD */
+        /* CAPA OSCURA */
         .capa-oscura {
             position: fixed;
             top: 0;
@@ -35,7 +35,7 @@
             z-index: 1;
         }
 
-        /* EFECTO DE HUMO ANIMADO */
+        /* EFECTO HUMO */
         .humo {
             position: fixed;
             width: 200%;
@@ -51,34 +51,33 @@
             to { transform: translate(-200px,-200px); }
         }
 
-        /* CONTENEDOR DE INTERFAZ */
+        /* INTERFAZ */
         .interface {
             position: relative;
             z-index: 10;
             text-align: center;
-            width: 100%;
-            max-width: 900px;
+            width: 90%;
+            max-width: 800px;
         }
 
-        /* TITULO CON BRILLO AZUL */
         h1 {
-            font-size: 55px;
+            font-size: clamp(30px, 8vw, 55px);
             margin-bottom: 10px;
             text-shadow: 0 0 25px rgba(0,150,255,0.9);
-            letter-spacing: 3px;
+            color: white;
         }
 
-        p.slogan {
-            font-size: 20px;
+        .slogan {
+            font-size: 1.2rem;
             margin-bottom: 40px;
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
-        /* BOTON PRINCIPAL */
+        /* BOTONES */
         .btn-entrar {
             padding: 15px 50px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             background: #00aaff;
             color: white;
             font-size: 20px;
@@ -90,19 +89,19 @@
 
         .btn-entrar:hover {
             background: #0077aa;
-            transform: scale(1.1);
+            transform: scale(1.05);
             box-shadow: 0 0 30px #00aaff;
         }
 
-        /* SECCIONES Y GRILLA */
+        /* CONTENIDO SECCIONES */
         #contenido {
             display: none;
             flex-direction: column;
             align-items: center;
-            animation: aparecer 0.8s ease;
+            animation: aparecer 0.5s ease;
         }
 
-        .seccion-container {
+        .grid-secciones {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
@@ -111,49 +110,41 @@
         }
 
         .seccion {
-            padding: 20px;
+            padding: 15px;
             background: rgba(0,0,0,0.8);
             border-left: 5px solid #00aaff;
             cursor: pointer;
             transition: 0.3s;
             text-align: left;
-            font-size: 18px;
         }
 
         .seccion:hover {
-            transform: translateX(10px);
-            background: rgba(0,170,255,0.2);
-            box-shadow: 0 0 15px #00aaff;
+            background: rgba(0, 170, 255, 0.2);
+            transform: translateX(5px);
         }
 
-        /* DETALLE */
         #detalle {
-            margin-top: 25px;
-            padding: 25px;
+            margin-top: 20px;
+            padding: 20px;
             background: rgba(0,0,0,0.9);
-            border-radius: 10px;
             border: 1px solid #00aaff;
             text-align: left;
-            animation: aparecer 0.5s ease;
         }
 
         @keyframes aparecer {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .btn-volver {
+        .volver {
             background: transparent;
             border: 1px solid white;
             color: white;
-            padding: 8px 15px;
-            cursor: pointer;
+            padding: 5px 15px;
             margin-bottom: 20px;
-            transition: 0.3s;
+            cursor: pointer;
+            align-self: flex-start;
         }
-
-        .btn-volver:hover { background: white; color: black; }
-
     </style>
 </head>
 <body>
@@ -170,15 +161,13 @@
         </div>
 
         <div id="contenido">
-            <button class="btn-volver" onclick="volver()">⬅ Volver</button>
-            
-            <div class="seccion-container">
-                <div class="seccion" onclick="abrirSeccion('marina')">⚓ Marina</div>
-                <div class="seccion" onclick="abrirSeccion('tierra')">🪖 Terrestre</div>
-                <div class="seccion" onclick="abrirSeccion('aire')">✈ Aéreo</div>
-                <div class="seccion" onclick="abrirSeccion('logistica')">📦 Logística</div>
+            <button class="volver" onclick="volver()">⬅ Volver</button>
+            <div class="grid-secciones">
+                <div class="seccion" onclick="abrir('marina')">⚓ Marina</div>
+                <div class="seccion" onclick="abrir('tierra')">🪖 Terrestre</div>
+                <div class="seccion" onclick="abrir('aire')">✈ Aéreo</div>
+                <div class="seccion" onclick="abrir('logistica')">📦 Logística</div>
             </div>
-
             <div id="detalle" style="display:none;"></div>
         </div>
 
@@ -188,28 +177,21 @@
         function entrar() {
             document.getElementById("inicio").style.display = "none";
             document.getElementById("contenido").style.display = "flex";
-            document.body.style.overflow = "auto"; // Permite scroll si el detalle es largo
         }
-
         function volver() {
             document.getElementById("contenido").style.display = "none";
             document.getElementById("inicio").style.display = "block";
-            document.getElementById("detalle").style.display = "none";
-            document.body.style.overflow = "hidden";
         }
-
-        function abrirSeccion(seccion) {
+        function abrir(tipo) {
             const d = document.getElementById("detalle");
             d.style.display = "block";
-            
-            const textos = {
-                marina: "<h3>⚓ Marina</h3><p>Controlá las rutas de suministro y protegé tus costas. Usa submarinos para asfixiar al enemigo.</p>",
-                tierra: "<h3>🪖 Terrestre</h3><p>Diseñá divisiones equilibradas y usá el terreno a tu favor. ¡Cuidado con el invierno ruso!</p>",
-                aire: "<h3>✈ Aéreo</h3><p>La superioridad aérea gana guerras. Apoyá a tus tropas con apoyo aéreo cercano.</p>",
-                logistica: "<h3>📦 Logística</h3><p>Sin trenes ni suministros, tus tanques no se moverán. Vigilá siempre tus líneas de abastecimiento.</p>"
+            const info = {
+                marina: "<h3>⚓ Marina</h3><p>Usa submarinos para atacar convoyes enemigos.</p>",
+                tierra: "<h3>🪖 Terrestre</h3><p>Mantén tu ancho de combate en 20 o 40.</p>",
+                aire: "<h3>✈ Aéreo</h3><p>La superioridad aérea es clave para avanzar.</p>",
+                logistica: "<h3>📦 Logística</h3><p>Sin suministros, tus tropas no podrán pelear.</p>"
             };
-
-            d.innerHTML = textos[seccion];
+            d.innerHTML = info[tipo];
         }
     </script>
 </body>
