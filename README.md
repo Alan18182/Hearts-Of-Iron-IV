@@ -1,4 +1,4 @@
-<!Todo hecho con el fin de conocimientos del juego.>
+<Con el fin de conocimientos del juego.>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -22,41 +22,12 @@
       justify-content: center;
       align-items: center;
       overflow: hidden;
-      position: relative;
-    }
-
-    body::before {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(56,189,248,0.1) 1px, transparent 1px);
-      background-size: 40px 40px;
-      animation: moveBg 20s linear infinite;
-    }
-
-    body::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    @keyframes moveBg {
-      from { transform: translate(0,0); }
-      to { transform: translate(-200px, -200px); }
     }
 
     .container {
       text-align: center;
-      position: relative;
-      z-index: 2;
       backdrop-filter: blur(10px);
-      background: rgba(0,0,0,0.4);
+      background: rgba(0,0,0,0.5);
       padding: 40px;
       border-radius: 20px;
       box-shadow: 0 0 40px rgba(56,189,248,0.3);
@@ -85,7 +56,6 @@
       cursor: pointer;
       transition: 0.3s;
       box-shadow: 0 0 15px #38bdf8;
-      margin: 5px;
     }
 
     button:hover {
@@ -99,13 +69,42 @@
       font-size: 0.8em;
       color: #94a3b8;
     }
+
+    /* PANEL OCULTO */
+    #menu {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      top: 0;
+      left: 0;
+      padding-top: 80px;
+      text-align: center;
+    }
+
+    .seccion {
+      margin: 15px;
+      padding: 15px;
+      background: rgba(56,189,248,0.1);
+      border: 1px solid #38bdf8;
+      border-radius: 10px;
+      display: inline-block;
+      width: 200px;
+      transition: 0.3s;
+    }
+
+    .seccion:hover {
+      transform: scale(1.1);
+      background: rgba(56,189,248,0.3);
+    }
   </style>
 </head>
 
 <body>
 
   <!-- PANTALLA PRINCIPAL -->
-  <div id="inicio" class="container">
+  <div class="container" id="inicio">
     <h1>⚔️ Hearts Of Iron IV ⚔️</h1>
     
     <p>
@@ -119,36 +118,24 @@
     </footer>
   </div>
 
-  <!-- MENÚ -->
-  <div id="menu" class="container" style="display:none;">
-    <h1>🌍 Panel de Estrategia</h1>
+  <!-- MENU OCULTO -->
+  <div id="menu">
 
-    <p>Selecciona una doctrina</p>
+    <h1>📚 Secciones</h1>
 
-    <button onclick="alert('Sección Marina')">🚢 Marina</button>
-    <button onclick="alert('Sección Terrestre')">🪖 Terrestre</button>
-    <button onclick="alert('Sección Aéreo')">✈️ Aéreo</button>
+    <div class="seccion">⚓ Marina</div>
+    <div class="seccion">🪖 Terrestre</div>
+    <div class="seccion">✈️ Aéreo</div>
+    <div class="seccion">🔬 Investigaciones</div>
+    <div class="seccion">🏛️ Focos Nacionales</div>
+    <div class="seccion">📦 Guía Logística</div>
 
-    <br><br>
-
-    <button onclick="alert('Sección Investigaciones')">🔬 Investigaciones</button>
-    <button onclick="alert('Sección Focos Nacionales')">🏛️ Focos Nacionales</button>
-    <button onclick="alert('Sección Guía Logística')">📦 Guía Logística</button>
-
-    <br><br>
-
-    <button onclick="volver()">⬅️ Volver</button>
   </div>
 
   <script>
     function entrar() {
-      document.getElementById('inicio').style.display = 'none';
-      document.getElementById('menu').style.display = 'block';
-    }
-
-    function volver() {
-      document.getElementById('menu').style.display = 'none';
-      document.getElementById('inicio').style.display = 'block';
+      document.getElementById("inicio").style.display = "none";
+      document.getElementById("menu").style.display = "block";
     }
   </script>
 
