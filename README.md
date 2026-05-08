@@ -166,10 +166,13 @@
             const info = {
                 marina: `
                     <h3>⚓ ESTRATEGIA NAVAL DEFINITIVA</h3>
-                    <p><strong>Composición de Flota:</strong> La clave es el posicionamiento y el ratio de pantallas (Destructores y Cruceros Ligeros). Se recomienda un ratio de 4:1 para proteger a los Buques Capitales.</p>
+                    <p><strong>Composición y Proporción:</strong> La supervivencia de tu flota depende de las "pantallas" (Destructores y Cruceros Ligeros). Debes mantener un ratio mínimo de <strong>4 pantallas por cada Buque Capital</strong> para bloquear torpedos enemigos.</p>
                     <ul>
-                        <li><strong>Misiones:</strong> Patrulla para detectar, Fuerza de Choque para destruir.</li>
-                        <li><strong>Submarinos:</strong> Úsalos en grupos pequeños para guerra de convoyes en océanos profundos.</li>
+                        <li><strong>Fuerza de Choque (Strike Force):</strong> Tu flota principal. Déjala en puerto con esta misión para ahorrar combustible; solo saldrá cuando tus patrullas detecten una flota enemiga importante.</li>
+                        <li><strong>Patrulla:</strong> Usa grupos de 1-2 Cruceros Ligeros muy rápidos equipados con radares y catapultas de aviones. Su objetivo es detectar, no combatir.</li>
+                        <li><strong>Guerra de Convoyes:</strong> Los submarinos son letales en grupos de 8 a 12. Ataca en zonas de "Océano Profundo" para maximizar su ocultamiento.</li>
+                        <li><strong>Control de Estrechos:</strong> El acceso a mares cerrados (como el Mediterráneo o el Báltico) depende de puntos terrestres clave como Gibraltar, Suez o Copenhague.</li>
+                        <li><strong>Diseño de Buques:</strong> Prioriza el <strong>Control de Daños</strong> y la <strong>Batería Principal</strong> en acorazados. En destructores, enfócate en cargas de profundidad si buscas cazar submarinos.</li>
                     </ul>`,
                 tierra: `
                     <h3>🪖 EJÉRCITO Y COMBATE TERRESTRE</h3>
