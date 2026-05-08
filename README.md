@@ -16,7 +16,7 @@
 
 /* FONDO */
 body {
-  background: url('TU_IMAGEN_AQUI.jpg') no-repeat center center/cover;
+  background: url('fondo.png') no-repeat center center/cover;
   color: white;
   overflow: hidden;
 }
